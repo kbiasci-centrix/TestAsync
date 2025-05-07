@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>JTFBenchmark-20250508-112045</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 10 (10.0.17763.7131/1809/October2018Update/Redstone5)
+Intel Xeon Platinum 8488C, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 8.0.404
+  [Host]     : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  DefaultJob : .NET 8.0.14 (8.0.1425.11118), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method                               </th><th>Mean </th><th>Error</th><th>StdDev</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>AsyncAllTheWay</td><td>100.58 ms</td><td>0.116 ms</td><td>0.109 ms</td><td>26.81 KB</td>
+</tr><tr><td>WithSingleJTF</td><td>100.48 ms</td><td>0.219 ms</td><td>0.205 ms</td><td>42.93 KB</td>
+</tr><tr><td>WithJTFMultipleContextNested</td><td>3,013.26 ms</td><td>2.663 ms</td><td>2.491 ms</td><td>204.57 KB</td>
+</tr><tr><td>WithJTFAndFactoryUtilNested</td><td>3,014.15 ms</td><td>2.282 ms</td><td>2.135 ms</td><td>199.33 KB</td>
+</tr><tr><td>SyncOverAsync1</td><td>103.08 ms</td><td>1.341 ms</td><td>1.317 ms</td><td>31.98 KB</td>
+</tr><tr><td>SyncOverAsync2</td><td>102.08 ms</td><td>1.254 ms</td><td>1.173 ms</td><td>31.52 KB</td>
+</tr><tr><td>WithJTFDeadlockAvoidance</td><td>10.81 ms</td><td>0.121 ms</td><td>0.113 ms</td><td>86.22 KB</td>
+</tr><tr><td>SyncOverAsyncWithDeadlockPotentialRewritten</td><td>10.73 ms</td><td>0.170 ms</td><td>0.159 ms</td><td>20.89 KB</td>
+</tr></tbody></table>
+</body>
+</html>
